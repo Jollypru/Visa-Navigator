@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../Providers/AuthProviders';
 
 const Headers = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut().then().catch(error => console.error(error));
+    }
+
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/allVisa'>All Visas</NavLink></li>
@@ -41,8 +49,19 @@ const Headers = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <NavLink to='/login' className='mr-3 bg-orange-500 text-white py-1 px-5 rounded-sm '>Login</NavLink>
-                <NavLink to='/register' className=' bg-orange-500 text-white py-1 px-5 rounded-sm'>Register</NavLink>
+                {
+                    user ? (
+                        <div className='flex items-center gap-3'>
+                            <img src={user.photoURL} alt="" title={user.displayName} className='w-10 h-10 rounded-full' />
+                            <button onClick={handleLogOut} className=' bg-orange-500 text-white py-1 px-5 rounded-sm'>Logout</button>
+                        </div>
+                    ) : (
+                        <div>
+                            <NavLink to='/login' className='mr-3 bg-orange-500 text-white py-1 px-5 rounded-sm '>Login</NavLink>
+                            <NavLink to='/register' className=' bg-orange-500 text-white py-1 px-5 rounded-sm'>Register</NavLink>
+                        </div>
+                    )
+                }
             </div>
         </div>
     );
