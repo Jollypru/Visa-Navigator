@@ -65,8 +65,8 @@ const ApplyModal = ({ userName, userEmail, visaFee, visaId, setShowModal }) => {
                     <input type="number" name="fee" value={visaFee} className='input input-bordered input-sm w-full mt-2 mb-4 bg-slate-100' readOnly />
                 </div>
                 <div>
-                    <button type='submit' className='bg-green-600 text-white rounded-md py-1 px-5 mr-3'>Apply</button>
-                    <button onClick={() => setShowModal(false)} className='bg-red-600 text-white rounded-md py-1 px-5'>Cancel</button>
+                    <button type='submit' className='bg-green-500 text-white rounded-md py-1 px-5 mr-3'>Apply</button>
+                    <button onClick={() => setShowModal(false)} className='bg-red-500 text-white rounded-md py-1 px-5'>Cancel</button>
                 </div>
             </form>
         </div>
