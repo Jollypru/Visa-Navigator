@@ -1,20 +1,45 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const AddVisa = () => {
-    const requiredDocuments = ['Valid Passport', 'Visa application form', "Recent passport-sized photograph"]
+    const requiredDocuments = ['Valid Passport', 'Visa application form', "Recent passport-sized photograph", "Health insurance", "Proof of financial support","Employment contract", "Certificate of Eligibility", "English language proficiency test results", "Travel itinerary"]
 
     const handleAddVisa = e => {
         e.preventDefault();
+
+        const countryImage = e.target.countryImage.value;
         const countryName = e.target.countryName.value;
         const visaType = e.target.visaType.value;
         const processingTime = e.target.processingTime.value;
+        const requiredDoc = e.target.requiredDoc.value;
         const description = e.target.description.value;
-        const age = e.target.age.value;
+        const ageRestriction = e.target.ageRestriction.value;
         const fee = e.target.fee.value;
         const validity = e.target.validity.value;
         const applicationMethod = e.target.applicationMethod.value;
 
-        console.log(countryName, visaType, processingTime, description, age, fee, validity, applicationMethod);
+        const newVisa = {countryImage, countryName, visaType, processingTime, requiredDoc, description, ageRestriction, fee, validity, applicationMethod}
+        console.log(newVisa);
+
+        fetch('http://localhost:5000/visas', {
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(newVisa)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Visa Added Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                })
+            }
+        })
     }
     return (
         <div className='text-gray-800 p-10'>
@@ -44,7 +69,10 @@ const AddVisa = () => {
                             <option>Student Visa</option>
                             <option>Tourist Visa</option>
                             <option>Official Visa</option>
-                            <option>Working Visa</option>
+                            <option>Cultural Exchange Visa</option>
+                            <option>Schengen Visa</option>
+                            <option>Working Holiday Visa</option>
+
                         </select>
                     </div>
                     <div className='form-control md:w-1/2'>
@@ -63,7 +91,7 @@ const AddVisa = () => {
                             requiredDocuments.map(document => (
                                 <div key={document}>
                                     <input
-                                        type="checkbox" value={document} className="mr-2" required
+                                        type="checkbox" value={document} name='requiredDoc' className="mr-2" required
                                     />
                                     <span>{document}</span>
                                 </div>
@@ -82,7 +110,7 @@ const AddVisa = () => {
                         <label>
                             <span className='text-xl'>Age Restriction</span>
                         </label>
-                        <input type="number" name='age' placeholder='Enter age restriction' className='input input-bordered w-full mt-2' required />
+                        <input type="number" name='ageRestriction' placeholder='Enter age restriction' className='input input-bordered w-full mt-2' required />
                     </div>
                     <div className='form-control md:w-1/2'>
                         <label>

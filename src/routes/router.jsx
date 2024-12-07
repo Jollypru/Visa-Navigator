@@ -8,6 +8,8 @@ import VisaApplication from "../components/VisaApplication";
 import Login from "../components/Login";
 import Register from "../components/Register";
 import ErrorPage from "../components/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
+import VisaDetails from "../components/VisaDetails";
 
 const router = createBrowserRouter([
     {
@@ -21,11 +23,25 @@ const router = createBrowserRouter([
             },
             {
                 path: 'allVisa',
-                element: <AllVisa></AllVisa>
+                element: <AllVisa></AllVisa>,
+                loader: () => fetch('http://localhost:5000/visas')
+            },
+            {
+                path: 'visa-details/:id',
+                element: (
+                    <PrivateRoute>
+                        <VisaDetails></VisaDetails>
+                    </PrivateRoute>
+                ),
+                loader: ({ params }) => fetch(`http://localhost:5000/visas/${params.id}`)
             },
             {
                 path: 'addVisa',
-                element: <AddVisa></AddVisa>
+                element: (
+                    <PrivateRoute>
+                        <AddVisa></AddVisa>
+                    </PrivateRoute>
+                )
             },
             {
                 path: 'myAddedVisa',
