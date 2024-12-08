@@ -4,19 +4,24 @@ import { auth } from '../firebase.init';
 
 export const AuthContext = createContext(null);
 
-const AuthProviders = ({children}) => {
+const AuthProviders = ({ children }) => {
 
-    const [user, setUser] =useState(null);
+    const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
+            if (currentUser) {
+                setUser(currentUser);
+            } else{
+                setUser(null);
+            }
+            setLoading(false);
         });
         return () => unsubscribe();
     }, [])
 
-    const createUser =(email, password) => {
+    const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
@@ -30,11 +35,11 @@ const AuthProviders = ({children}) => {
         return signOut(auth);
     }
 
-    const userInfo ={
+    const userInfo = {
         user,
         loading,
         createUser,
-        signInUser, 
+        signInUser,
         logOut
     }
     return (
