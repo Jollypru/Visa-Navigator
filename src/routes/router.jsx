@@ -49,7 +49,11 @@ const router = createBrowserRouter([
             },
             {
                 path: 'visaApplication',
-                element: <VisaApplication></VisaApplication>
+                element: (
+                    <PrivateRoute>
+                        <VisaApplication></VisaApplication>
+                    </PrivateRoute>
+                ),
             },
             {
                 path: 'login',

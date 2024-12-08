@@ -22,21 +22,21 @@ const VisaDetails = () => {
                     <h1 className='text-4xl font-bold text-black mb-3'>{countryName}</h1>
                     <hr className='font-bold'/>
                     <p className='text-2xl font-medium mt-3'>Visa Type:</p>
-                    <span className='text-xl'>{visaType}</span>
+                    <span className='text-lg'>{visaType}</span>
                     <p className='text-2xl font-medium mt-3'>Processing Time</p>
-                    <span className='text-xl'> {processingTime}</span>
+                    <span className='text-lg'> {processingTime}</span>
                     <p className='text-2xl font-medium mt-3'>Required Documents: </p>
-                    <span className='text-xl'> {requiredDoc}</span>
+                    <span className='text-lg'> {requiredDoc}</span>
                     <p className='text-2xl font-medium mt-3'>Description:</p>
-                    <span className='text-xl'>  {description}</span>
+                    <span className='text-lg'>  {description}</span>
                     <p className='text-2xl font-medium mt-3'>Age Restriction: </p>
-                    <span className='text-xl'> {ageRestriction}</span>
+                    <span className='text-lg'> {ageRestriction}</span>
                     <p className='text-2xl font-medium mt-3'>Fee :</p>
-                    <span className='text-xl'>  {fee} BDT</span>
+                    <span className='text-lg'>  {fee} BDT</span>
                     <p className='text-2xl font-medium mt-3'>Validity : </p>
-                    <span className='text-xl'> {validity}</span>
+                    <span className='text-lg'> {validity}</span>
                     <p className='text-2xl font-medium mt-3'>Application Method : </p>
-                    <span className='text-xl'> {applicationMethod}</span>
+                    <span className='text-lg'> {applicationMethod}</span>
                 </div>
                 <div>
                     <img src={countryImage} alt="" />
