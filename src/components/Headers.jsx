@@ -41,7 +41,7 @@ const Headers = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl text-blue-600">YourNextVisa</a>
+                <a className="btn btn-ghost text-xl text-blue-600">Visa Navigator</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

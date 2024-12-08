@@ -11,7 +11,7 @@ const Footer = () => {
                         <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
                         <ul>
                             <li className="mb-2">
-                                <p>Email: YourNextVisa@gmail.com</p>
+                                <p>Email: Visanavigator@gmail.com</p>
                             </li>
                             <li className="mb-2">
                                 <p>Phone: +880 18456-78901</p>
@@ -45,7 +45,7 @@ const Footer = () => {
                 {/* Copyright Notice */}
                 <div className="text-center mt-8">
                     <p className="text-sm text-gray-400">
-                        &copy; {new Date().getFullYear()} YourNextVisa. All rights reserved.
+                        &copy; {new Date().getFullYear()} Visa Navigator. All rights reserved.
                     </p>
                 </div>
             </div>
