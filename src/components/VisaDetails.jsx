@@ -13,8 +13,7 @@ const VisaDetails = () => {
     const handleApplyButton = (applicationData) => {
        setShowModal(true);
     }
-    // const handleOpenModal = () => setShowModal(true);
-    // const handleCloseModal = () => setShowModal(false);
+    
     return (
         <div className='bg-gray-200 py-10'>
             <div className='w-3/4 mx-auto border shadow-xl rounded-lg p-10 grid grid-cols-3 gap-5 bg-white'>

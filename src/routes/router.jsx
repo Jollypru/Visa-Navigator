@@ -24,7 +24,7 @@ const router = createBrowserRouter([
             {
                 path: 'allVisa',
                 element: <AllVisa></AllVisa>,
-                loader: () => fetch('http://localhost:5000/visas')
+                loader: () => fetch('https://assignment-10-server-orcin-three.vercel.app/visas')
             },
             {
                 path: 'visa-details/:id',
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
                         <VisaDetails></VisaDetails>
                     </PrivateRoute>
                 ),
-                loader: ({ params }) => fetch(`http://localhost:5000/visas/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-10-server-orcin-three.vercel.app/visas/${params.id}`)
             },
             {
                 path: 'addVisa',

@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Providers/AuthProviders';
 
-
-
 const VisaApplication = () => {
 
     const { user } = useContext(AuthContext);
@@ -10,33 +8,37 @@ const VisaApplication = () => {
     const [visaDetails, setVisaDetails] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredApplications, setFilteredApplications] = useState([]);
+    const [mergedApplications, setMergedApplications] = useState([]);
 
     useEffect(() => {
    
-        fetch(`http://localhost:5000/myApplications?email=${user.email}`)
+        fetch(`https://assignment-10-server-orcin-three.vercel.app/myApplications?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
                 setApplications(data)
             });
 
-        fetch('http://localhost:5000/visas')
+        fetch('https://assignment-10-server-orcin-three.vercel.app/visas')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
                 setVisaDetails(data);
             });
-    }, [user.email])
+    }, [user.email]);
 
-    const mergedApplications = applications.map((app) => {
-        const visaDetail = visaDetails.find((detail) => detail._id === app.visaId);
-        return {
-            ...app,
-            visaDetail: visaDetail || {}
-        };
-    });
-    console.log('mergedApp', mergedApplications);
-
+    useEffect(()=>{
+        const merged = applications.map((app) => {
+            const visaDetail = visaDetails.find((detail) => detail._id === app.visaId);
+            return {
+                ...app,
+                visaDetail: visaDetail || {}
+            };
+        });
+        setMergedApplications(merged);
+        setFilteredApplications(merged);
+    }, [applications, visaDetails]);
+  
     useEffect(() => {
         if (searchQuery.trim() === '') {
             setFilteredApplications(mergedApplications); 
@@ -49,7 +51,7 @@ const VisaApplication = () => {
     }, [searchQuery, mergedApplications]);
 
     const handleCancelButton = (id) => {
-        fetch(`http://localhost:5000/myApplications/${id}`, {
+        fetch(`https://assignment-10-server-orcin-three.vercel.app/myApplications/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

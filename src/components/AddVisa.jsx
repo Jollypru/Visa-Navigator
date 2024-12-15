@@ -23,7 +23,7 @@ const AddVisa = () => {
         const newVisa = { countryImage, countryName, visaType, processingTime, requiredDoc, description, ageRestriction, fee, validity, applicationMethod }
         console.log(newVisa);
 
-        fetch('http://localhost:5000/visas', {
+        fetch('https://assignment-10-server-orcin-three.vercel.app/visas', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

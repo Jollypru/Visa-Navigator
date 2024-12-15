@@ -8,7 +8,7 @@ const MyAddedVisa = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/myAddedVisas?email=${user.email}`)
+            fetch(`https://assignment-10-server-orcin-three.vercel.app/myAddedVisas?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);

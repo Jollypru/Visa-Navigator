@@ -8,7 +8,7 @@ const LatestVisas = () => {
 
     // Fetching the latest 6 visas
     useEffect(() => {
-        fetch('http://localhost:5000/latestSixVisas')  // Assuming the API supports a limit query parameter
+        fetch('https://assignment-10-server-orcin-three.vercel.app/latestSixVisas')  // Assuming the API supports a limit query parameter
             .then((res) => res.json())
             .then((data) => setLatestVisas(data))
             .catch((error) => console.error('Error fetching data:', error));

@@ -20,7 +20,7 @@ const ApplyModal = ({ userName, userEmail, visaFee, visaId, setShowModal }) => {
             appliedDate,
             fee: visaFee
         };
-        fetch('http://localhost:5000/applyVisas', {
+        fetch('https://assignment-10-server-orcin-three.vercel.app/applyVisas', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
