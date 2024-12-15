@@ -6,9 +6,8 @@ const LatestVisas = () => {
     const [latestVisas, setLatestVisas] = useState([]);
     const navigate = useNavigate();
 
-    // Fetching the latest 6 visas
     useEffect(() => {
-        fetch('https://assignment-10-server-orcin-three.vercel.app/latestSixVisas')  // Assuming the API supports a limit query parameter
+        fetch('https://assignment-10-server-orcin-three.vercel.app/latestSixVisas')  
             .then((res) => res.json())
             .then((data) => setLatestVisas(data))
             .catch((error) => console.error('Error fetching data:', error));
@@ -28,13 +27,13 @@ const LatestVisas = () => {
                                 className="w-full h-40 object-cover rounded-lg"
                             />
                         </div>
-                        <div>
-                            <h3 className="text-2xl font-semibold text-black">{visa.countryName}</h3>
-                            <p className="text-lg font-medium">Visa Type: {visa.visaType}</p>
-                            <p className="text-lg font-medium">Processing Time: {visa.processingTime}</p>
-                            <p className="text-lg font-medium">Fee: {visa.fee} BDT</p>
-                            <p className="text-lg font-medium">Validity: {visa.validity}</p>
-                            <p className="text-lg font-medium">Application Method: {visa.applicationMethod}</p>
+                        <div className='h-64'>
+                            <h3 className="text-2xl font-semibold text-black mb-3">{visa.countryName}</h3>
+                            <p className="text-lg"><span className='font-medium'>Visa Type:</span> {visa.visaType}</p>
+                            <p className="text-lg"><span className='font-medium'>Processing Time:</span> {visa.processingTime}</p>
+                            <p className="text-lg"><span className='font-medium'>Fee:</span> {visa.fee} BDT</p>
+                            <p className="text-lg"><span className='font-medium'>Validity:</span> {visa.validity}</p>
+                            <p className="text-lg"><span className='font-medium'>Application Method:</span> {visa.applicationMethod}</p>
                         </div>
 
                         <div>
@@ -43,7 +42,7 @@ const LatestVisas = () => {
                     </div>
                 ))}
             </div>
-            {/* See All Visas Button */}
+
             <div className="text-center mt-6">
                 <button
                     onClick={() => navigate('/allVisa')}

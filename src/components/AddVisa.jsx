@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 
 const AddVisa = () => {
     const [loading, setLoading] = useState(false);
-    const requiredDocuments = ['Valid Passport', 'Visa application form', "Recent passport-sized photograph", "Health insurance", "Proof of financial support", "Employment contract", "Certificate of Eligibility", "English language proficiency test results", "Travel itinerary"]
+    const requiredDocuments = ['Valid Passport', 'Visa application form', "Recent passport-sized photograph", "Health insurance", "Proof of financial support", "Employment contract", "Certificate of Eligibility", "English language proficiency test results", "Travel itinerary", "Travel insurance covering Schengen area"];
 
     const handleAddVisa = e => {
         setLoading(true);
@@ -44,6 +44,8 @@ const AddVisa = () => {
                 }
             })
     }
+
+
     return (
         <div className='text-gray-800 p-10'>
             <h2 className='text-center font-bold text-4xl my-5'>Add a Visa</h2>
@@ -97,16 +99,18 @@ const AddVisa = () => {
                                 <label>
                                     <span className='text-xl'>Required Documents</span>
                                 </label>
+
                                 {
-                                    requiredDocuments.map(document => (
-                                        <div key={document}>
+                                    requiredDocuments.map((document, index) => (
+                                        <div key={index}>
                                             <input
-                                                type="checkbox" value={document} name='requiredDoc[]' className="mr-2" required
+                                                type="checkbox" value={document} name='requiredDoc[]' className="mr-2" 
                                             />
                                             <span>{document}</span>
                                         </div>
                                     ))
                                 }
+                               
                             </div>
                             <div className='form-control md:w-1/2'>
                                 <label>

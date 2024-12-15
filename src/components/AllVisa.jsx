@@ -47,11 +47,15 @@ const AllVisa = () => {
                             <div className='h-36'>
                                 <img className='h-full w-full' src={visa.countryImage} alt="" />
                             </div>
-                            <h1 className='text-xl my-2'>Country: {visa.countryName}</h1>
-                            <p >Visa Type: {visa.visaType}</p>
-                            <p >Validity: {visa.validity}</p>
-                            <p>Fee: BDT {visa.fee}</p>
-                            <Link to={`/visa-details/${visa._id}`}><button className='bg-yellow-500 text-black py-1 w-full mt-3'>View Details</button></Link>
+                            <div className='h-40'>
+                                <h1 className='text-xl my-2'>{visa.countryName}</h1>
+                                <p >Visa Type: {visa.visaType}</p>
+                                <p >Validity: {visa.validity}</p>
+                                <p>Fee: BDT {visa.fee}</p>
+                            </div>
+                            <div>
+                                <Link to={`/visa-details/${visa._id}`}><button className='bg-yellow-500 text-black py-1 w-full mt-3'>View Details</button></Link>
+                            </div>
                         </div>
                     ))
                 }

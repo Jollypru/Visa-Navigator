@@ -25,7 +25,11 @@ const VisaDetails = () => {
                     <p className='text-2xl font-medium mt-3'>Processing Time</p>
                     <span className='text-lg'> {processingTime}</span>
                     <p className='text-2xl font-medium mt-3'>Required Documents: </p>
-                    <span className='text-lg'> {requiredDoc}</span>
+                    <ul className='text-lg'>
+                        {requiredDoc && requiredDoc.map((doc, index) => (
+                            <li key={index}>{index + 1}. {doc}</li>
+                        ))}
+                    </ul>
                     <p className='text-2xl font-medium mt-3'>Description:</p>
                     <span className='text-lg'>  {description}</span>
                     <p className='text-2xl font-medium mt-3'>Age Restriction: </p>

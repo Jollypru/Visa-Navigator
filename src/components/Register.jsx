@@ -46,13 +46,24 @@ const Register = () => {
 
         createUser(email, password)
         .then(result => {
-           console.log(result.user);
-           navigate('/');
+            const user = result.user;
+            updateProfile(user, {
+                displayName: name,
+                photoURL: photoURL,
+            })
+            .then(() => {
+                console.log("User created successfully:", user);
+                navigate('/');
+            })
+            .catch(error => {
+                console.error("Error updating profile:", error.message);
+                setError(error.message);
+            });
         })
         .catch(error => {
-            setError(error.message)
-            console.log(error.message);
-        })
+            console.error("Error during registration:", error.message);
+            setError(error.message);
+        });
     }
 
     const handleGoogleRegister = () => {

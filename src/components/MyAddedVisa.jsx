@@ -19,7 +19,7 @@ const MyAddedVisa = () => {
     }, [user])
     return (
         <div>
-            <h1>My Added Visas</h1>
+            <h1 className='text-center font-bold text-4xl my-5'>My Added Visas</h1>
             {user ? (
                 visas.length > 0 ? (
                     <div className="visas-container">

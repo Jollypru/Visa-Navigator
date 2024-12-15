@@ -11,7 +11,7 @@ const VisaApplication = () => {
     const [mergedApplications, setMergedApplications] = useState([]);
 
     useEffect(() => {
-   
+
         fetch(`https://assignment-10-server-orcin-three.vercel.app/myApplications?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
@@ -27,7 +27,7 @@ const VisaApplication = () => {
             });
     }, [user.email]);
 
-    useEffect(()=>{
+    useEffect(() => {
         const merged = applications.map((app) => {
             const visaDetail = visaDetails.find((detail) => detail._id === app.visaId);
             return {
@@ -38,10 +38,10 @@ const VisaApplication = () => {
         setMergedApplications(merged);
         setFilteredApplications(merged);
     }, [applications, visaDetails]);
-  
+
     useEffect(() => {
         if (searchQuery.trim() === '') {
-            setFilteredApplications(mergedApplications); 
+            setFilteredApplications(mergedApplications);
         } else {
             const filtered = mergedApplications.filter(application =>
                 application.visaDetail.countryName.toLowerCase().includes(searchQuery.toLowerCase())
@@ -98,7 +98,11 @@ const VisaApplication = () => {
                                                 <p className='text-xl font-medium mt-3'>Processing Time</p>
                                                 <span className='text-lg'> {application.visaDetail.processingTime}</span>
                                                 <p className='text-xl font-medium mt-3'>Required Documents: </p>
-                                                <span className='text-lg'> {application.visaDetail.requiredDoc}</span>
+                                                <ul className='text-lg'>
+                                                    {application.visaDetail.requiredDoc && application.visaDetail.requiredDoc.map((doc, index) => (
+                                                        <li key={index}>{index + 1}. {doc}</li>
+                                                    ))}
+                                                </ul>
                                                 <p className='text-xl font-medium mt-3'>Description:</p>
                                                 <span className='text-lg'>  {application.visaDetail.description}</span>
                                                 <p className='text-xl font-medium mt-3'>Age Restriction: </p>
