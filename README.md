@@ -18,3 +18,17 @@
 3. Fill out the application form for the visa you wish to apply for.
 4. Track your application status directly on the platform.
 5. Contact support for any queries regarding the visa process.
+
+## dependencies
+   - `dotenv`: "^16.4.7",
+   - `firebase`: "^11.0.2",
+   - `localforage`: "^1.10.0",
+   - `match-sorter`: "^8.0.0",
+   - `react`: "^18.3.1",
+   - `react-dom`: "^18.3.1",
+   - `react-icons`: "^5.4.0",
+   - `react-lottie`: "^1.2.10",
+   - `react-router-dom`: "^7.0.2",
+   - `react-tooltip`: "^5.28.0",
+   - `sort-by`: "^1.2.0",
+   - `sweetalert2`: "^11.14.5"
