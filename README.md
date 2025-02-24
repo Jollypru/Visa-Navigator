@@ -19,6 +19,13 @@
 4. Track your application status directly on the platform.
 5. Contact support for any queries regarding the visa process.
 
+## Main Techonogies
+- React.js
+- Express.js
+- Node.js
+- MongoDB
+- Firbase
+
 ## dependencies
    - `dotenv`: "^16.4.7",
    - `firebase`: "^11.0.2",
@@ -32,3 +39,16 @@
    - `react-tooltip`: "^5.28.0",
    - `sort-by`: "^1.2.0",
    - `sweetalert2`: "^11.14.5"
+
+## Installation & Setup
+### 1️⃣ Clone the Repository
+```
+git clone https://github.com/Jollypru/Visa-Navigator.git
+cd Visa-Navigator
+```
+
+### 2️⃣ Install Dependencies
+```
+npm install
+npm run dev
+```
